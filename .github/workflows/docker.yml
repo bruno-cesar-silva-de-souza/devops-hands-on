@@ -1,0 +1,29 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v3
+
+    - name: Login no Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build da imagem
+      run: docker build -f docker/Dockerfile -t meu-app-python .
+
+    - name: Tag da imagem
+      run: docker tag meu-app-python seu-usuario/meu-app-python:latest
+
+    - name: Push pro Docker Hub
+      run: docker push seu-usuario/meu-app-python:latest
