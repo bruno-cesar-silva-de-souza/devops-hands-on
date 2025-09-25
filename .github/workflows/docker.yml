@@ -24,7 +24,6 @@ jobs:
 
     - name: Tag da imagem
       run: docker tag meu-app-python bcssbr/meu-app-python:latest
-  
-   - name: Push pro Docker Hub
-     run: docker push bcssbr/meu-app-python:latest
 
+    - name: Push pro Docker Hub
+      run: docker push bcssbr/meu-app-python:latest
