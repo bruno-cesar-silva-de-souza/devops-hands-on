@@ -23,7 +23,8 @@ jobs:
       run: docker build -f docker/Dockerfile -t meu-app-python .
 
     - name: Tag da imagem
-      run: docker tag meu-app-python seu-usuario/meu-app-python:latest
+      run: docker tag meu-app-python bcssbr/meu-app-python:latest
+  
+   - name: Push pro Docker Hub
+     run: docker push bcssbr/meu-app-python:latest
 
-    - name: Push pro Docker Hub
-      run: docker push seu-usuario/meu-app-python:latest
