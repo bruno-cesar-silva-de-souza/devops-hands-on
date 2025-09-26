@@ -13,9 +13,6 @@ jobs:
       - name: Checkout código
         uses: actions/checkout@v3
 
-      - name: Verifica leitura dos segredos
-        run: echo "Usuário lido: ${{ secrets.DOCKER_USERNAME }}"
-
       - name: Login no Docker Hub
         uses: docker/login-action@v2
         with:
