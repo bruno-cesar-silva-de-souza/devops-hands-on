@@ -22,11 +22,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build da imagem
+      - name: Build imagem Docker
         run: docker build -f docker/Dockerfile -t meu-app-python .
 
-      - name: Tag da imagem
+      - name: Tag imagem Docker
         run: docker tag meu-app-python bcssbr/meu-app-python:latest
 
-      - name: Push pro Docker Hub
+      - name: Push imagem pro Docker Hub
         run: docker push bcssbr/meu-app-python:latest
