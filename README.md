@@ -5,3 +5,4 @@
 # Teste com token Docker Hub
 # Teste final com segredos recriados
 # Dispara workflow manualmente
+# Dispara workflow manualmente
