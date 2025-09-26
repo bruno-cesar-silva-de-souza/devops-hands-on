@@ -1,15 +1,21 @@
-# Usa uma imagem base leve com Python
+# Usar imagem base do Python
 FROM python:3.10-slim
 
-# Define o diretório de trabalho dentro do container
+# Diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copia o arquivo de dependências e instala os pacotes
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+# Copiar dependências
+COPY docker/requirements.txt .
 
-# Copia o código da aplicação
-COPY app.py .
+# Instalar dependências
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Comando para iniciar o app
+# Copiar o código da aplicação
+COPY ../app/app.py .
+
+# Expor a porta
+EXPOSE 5000
+
+# Comando para rodar o app
 CMD ["python", "app.py"]
+
