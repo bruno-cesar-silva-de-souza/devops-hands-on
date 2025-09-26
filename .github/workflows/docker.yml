@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -12,6 +13,9 @@ jobs:
     steps:
       - name: Checkout código
         uses: actions/checkout@v3
+
+      - name: Verifica leitura dos segredos
+        run: echo "Usuário lido: ${{ secrets.DOCKER_USERNAME }}"
 
       - name: Login no Docker Hub
         uses: docker/login-action@v2
@@ -23,7 +27,7 @@ jobs:
         run: docker build -f docker/Dockerfile -t meu-app-python .
 
       - name: Tag imagem Docker
-        run: docker tag meu-app-python bcssbr/meu-app-python:latest
+        run: docker tag meu-app-python otto2025/meu-app-python:latest
 
       - name: Push imagem pro Docker Hub
-        run: docker push bcssbr/meu-app-python:latest
+        run: docker push otto2025/meu-app-python:latest
