@@ -3,3 +3,4 @@
 # Teste seguro com secrets
 # Teste com token Docker Hub
 # Teste com token Docker Hub
+# Teste final com segredos recriados
